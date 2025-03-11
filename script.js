@@ -12,7 +12,7 @@
 
 // L’idée, c'est de créer une page web qui affiche les infos d’une donnée en particulier (un post ou une offre par exemple), plutôt qu’afficher la liste entière.
 
-const affichageCapital = document.querySelector("#capital");
+const affichagePays = document.querySelector("#pays");
 const languageCapital = document.querySelector("#langage");
 const contientCapital = document.querySelector("#continent");
 const inputText = document.querySelector("#inputCapital");
@@ -28,9 +28,6 @@ inputText.addEventListener("keydown", function (event) {
   }
 });
 
-const log = document.getElementById("log");
-const input = document.querySelector("input");
-
 async function myFunction(capital) {
   const promise = await fetch(
     `https://api.allorigins.win/get?url=${encodeURIComponent(
@@ -41,7 +38,7 @@ async function myFunction(capital) {
   const data = await promise.json();
   const pageContent = JSON.parse(data.contents);
 
-  affichageCapital.innerHTML = `Capitale : ${pageContent[0].capital} ${pageContent[0].flag}`;
+  affichagePays.innerHTML = `Pays : ${pageContent[0].name.common} ${pageContent[0].flag}`;
   contientCapital.innerHTML = `Continent : ${pageContent[0].continents}`;
   languageCapital.innerHTML = `Langage : ${
     Object.values(pageContent[0].languages)[0]
