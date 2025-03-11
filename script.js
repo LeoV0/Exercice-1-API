@@ -15,6 +15,21 @@
 const affichageCapital = document.querySelector("#capital");
 const languageCapital = document.querySelector("#langage");
 const contientCapital = document.querySelector("#continent");
+const inputText = document.querySelector("#inputCapital");
+const buttonValider = document.querySelector("#validationButton");
+
+buttonValider.addEventListener("click", () => {
+  myFunction(inputText.value);
+});
+
+inputText.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    buttonValider.click();
+  }
+});
+
+const log = document.getElementById("log");
+const input = document.querySelector("input");
 
 async function myFunction(capital) {
   const promise = await fetch(
@@ -32,5 +47,3 @@ async function myFunction(capital) {
     Object.values(pageContent[0].languages)[0]
   }`;
 }
-
-myFunction("Tokyo");
