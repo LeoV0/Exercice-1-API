@@ -17,6 +17,7 @@ const languageCapital = document.querySelector("#langage");
 const contientCapital = document.querySelector("#continent");
 const inputText = document.querySelector("#inputCapital");
 const buttonValider = document.querySelector("#validationButton");
+const containerStyle = document.querySelector(".container");
 
 buttonValider.addEventListener("click", () => {
   myFunction(inputText.value);
@@ -27,9 +28,6 @@ inputText.addEventListener("keydown", function (event) {
     buttonValider.click();
   }
 });
-
-const log = document.getElementById("log");
-const input = document.querySelector("input");
 
 async function myFunction(capital) {
   const promise = await fetch(
@@ -46,4 +44,5 @@ async function myFunction(capital) {
   languageCapital.innerHTML = `Langage : ${
     Object.values(pageContent[0].languages)[0]
   }`;
+  containerStyle.style.border = "3px solid black";
 }
